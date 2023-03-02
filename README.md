@@ -1,14 +1,4 @@
-# Actualización planeada para Enero 2023
-
-Por favor revisar rama php8+
-
-Cualquier PR es bienvenido.
-
-
-
-# correos-de-costa-rica-pymexpress-ws-client
-
-PHP WS Client Based on Mojito Shipping
+PHP WS Client Based on Mojito Shipping plugin
 
 Clase de conexión para el nuevo Web Service de Correos de Costa Rica (Pymexpress). Requiere de datos de conexión, si usted no cuenta con estos datos puede solicitarlos al correo jmora {arroba} correos.go.cr
 
@@ -20,7 +10,7 @@ Pymexpress y otros son marcas propias de Correos de Costa Rica.
 
 Composer
 ```
-composer require nomanualdev/correos-de-costa-rica-pymexpress-ws-client
+composer require mojitowp/pymexpress
 ```
 
 
