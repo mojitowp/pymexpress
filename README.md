@@ -20,7 +20,7 @@ composer require mojitowp/pymexpress
 $environment acepta "sandbox" o "production" (Pendiente: URLs de producción. Actualmente la conexión se hace hacia sandbox / pruebas ).
 
 ```
-$pymexpress = new Pymexpress\Pymexpress_WSC( $username, $password, $user_id, $service_id, $client_code, $environment );
+$pymexpress = new Mojito\Pymexpress\Pymexpress_WSC( $username, $password, $user_id, $service_id, $client_code, $environment );
 ```
 
 
