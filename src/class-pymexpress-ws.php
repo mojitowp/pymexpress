@@ -9,7 +9,7 @@
  * @author     Mojito Team <support@mojitowp.com>
  */
 
-namespace Pymexpress;
+namespace Mojito\Pymexpress;
 
 /**
  * Web Service connector class
