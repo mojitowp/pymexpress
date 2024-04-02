@@ -427,8 +427,11 @@ class Pymexpress_WSC {
 
 		$response     = array(
 			'status'   => '',
-			'response' => array(),
-			'log'    => '',
+			'response' => [],
+			'message'  => '',
+			'params'   => '',
+			'code'     => '',
+			'log'      => '',
 		);
 		$replacements = array(
 			'%Cliente%'        => $this->credentials['Client_code'],
@@ -503,41 +506,33 @@ class Pymexpress_WSC {
 
 		if ( $this->check_parameters( $replacements, $data_types, __FUNCTION__ ) ) {
 
-			$this->log( '1' );
-
 			$request_response = $this->request( 'ccrRegistroEnvio', $replacements );
-			$response['log'] .= $this->log( $this );
-			
+
 			if ( is_object( $request_response ) && isset( $request_response->aCodRespuesta ) ) {
 
-				$this->log( '1.1' );
-				$this->log( '1.1' );
+				$aCodRespuesta = (array) $request_response->aCodRespuesta;
+				$response['code'] = $aCodRespuesta[0];
 				
-				if ( $request_response->aCodRespuesta == '00') {
-					$this->log( '1.1.1' );
+				if ( $aCodRespuesta == '00') {
 					$response['status'] = 'ok';
 				} else {
-					$this->log( '1.1.2' );
 					$response['status'] = 'error';
 				}
 				
-				$response['log'] .= $this->log( sprintf( 'Guide number: %s, Order id: %s, CodRespuesta: %s: %s', $params['ENVIO_ID'], $order_id, $request_response?->aCodRespuesta, $request_response?->aMensajeRespuesta ) );
-				$response['log'] .= $this->log( sprintf( 'Args: %s', print_r( $this->clean_soap_fields_to_parameters( $replacements ), 1 ) ) );
+				$response['message'] = sprintf( 'Guide number: %s, Order id: %s, CodRespuesta: %s: %s', $params['ENVIO_ID'], $order_id, $request_response?->aCodRespuesta, $request_response?->aMensajeRespuesta );
+				$response['params']  = print_r( $this->clean_soap_fields_to_parameters( $replacements ), true )
 				
 			} else{
-
-				$this->log( '1.2' );
 				
 				$response['status'] = 'error';
-				$response['log'] .= $this->log( sprintf( 'Args: %s', print_r( $this->clean_soap_fields_to_parameters( $replacements ), 1 ) ) );
+				$response['params'] = sprintf( 'Args: %s', print_r( $this->clean_soap_fields_to_parameters( $replacements ), 1 ) );
 			}
 			
 			$response['response'] = (array) $request_response;
 
 		} else {
-			$this->log( '2' );
 			$response['status'] = 'error';
-			$response['log'] .= $this->log( 'ccrRegistroEnvio aborted.' );
+			$response['log'] = 'ccrRegistroEnvio aborted.';
 		}
 
 		return $response;
@@ -599,7 +594,7 @@ class Pymexpress_WSC {
 
 			$field_params = $data_types[ $field ];
 
-			$this->log( sprintf( 'Checking "%1$s" called from "%2$s".', $field, $method ) );
+			//$this->log( sprintf( 'Checking "%1$s" called from "%2$s".', $field, $method ) );
 
 			/**
 			 * Check if field is empty and if should be
