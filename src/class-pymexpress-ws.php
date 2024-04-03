@@ -520,7 +520,7 @@ class Pymexpress_WSC {
 				}
 				
 				$response['message'] = sprintf( 'Guide number: %s, Order id: %s, CodRespuesta: %s: %s', $params['ENVIO_ID'], $order_id, $request_response?->aCodRespuesta, $request_response?->aMensajeRespuesta );
-				$response['params']  = print_r( $this->clean_soap_fields_to_parameters( $replacements ), true )
+				$response['params']  = print_r( $this->clean_soap_fields_to_parameters( $replacements ), true );
 				
 			} else{
 				
