@@ -2,7 +2,7 @@
 /**
  * Correos de Costa Rica Webservice client
  *
- * @link       https://github.com/nomanualdev/correos-de-costa-rica-pymexpress-ws-client
+ * @link       https://github.com/mojitowp/pymexpress
  * @since      1.0.0
  * @package    CCR/Pymexpress
  * @subpackage CCR/Pymexpress/ws
