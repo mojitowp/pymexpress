@@ -13,7 +13,7 @@ namespace Mojito\Pymexpress;
 
 /**
  * Web Service connector class
- * Updated to 2022
+ * Updated to 2024
  */
 class Pymexpress_WSC {
 
@@ -513,7 +513,7 @@ class Pymexpress_WSC {
 				$aCodRespuesta = (array) $request_response->aCodRespuesta;
 				$response['code'] = $aCodRespuesta[0];
 				
-				if ( $aCodRespuesta == '00') {
+				if ( $response['code'] == '00') {
 					$response['status'] = 'ok';
 				} else {
 					$response['status'] = 'error';
